@@ -78,6 +78,19 @@
       padding:20px;
       opacity:0.6;
     }
+
+    /* New: Website preview image */
+    .website-preview {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .website-preview img {
+      max-width: 90%;
+      border-radius: 20px;
+      box-shadow: 0 0 20px red;
+    }
+
   </style>
 </head>
 
@@ -116,6 +129,14 @@
     <button onclick="window.open('https://www.tiktok.com/@xcon_adri')">Follow</button>
   </div>
 
+</section>
+
+<!-- New Section: Website Screenshot Preview -->
+<section class="website-preview">
+  <h2>Website Preview</h2>
+  <img src="screenshot.png" alt="Website Screenshot">
+  <p>Click the button below to visit the live site</p>
+  <button onclick="window.open('https://yourwebsite.com', '_blank')">Visit Site</button>
 </section>
 
 <footer>
