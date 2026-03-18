@@ -13,40 +13,48 @@
 body {
   background: radial-gradient(circle at center, #0b0f1a, #000);
   color:white;
-  animation: pulseBG 5s infinite alternate;
 }
 
-@keyframes pulseBG {
-  0% { background-color: #000; }
-  100% { background-color: #1a0000; }
-}
-
+/* HEADER */
 header {
   padding:25px;
   text-align:center;
   font-size:28px;
-  background: linear-gradient(90deg,#ff0000,#8b0000);
-  box-shadow:0 0 20px rgba(255,0,0,0.6);
+  background: linear-gradient(90deg,#ff003c,#7b00ff);
+  box-shadow:0 0 15px rgba(255,0,100,0.5);
 }
 
+/* HERO */
 .hero {
   padding:60px 20px;
   text-align:center;
 }
 
 .glow-text {
-  color:red;
-  text-shadow: 0 0 10px red, 0 0 30px crimson, 0 0 60px darkred;
   font-size:42px;
+  background: linear-gradient(90deg,#ff003c,#7b00ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow:0 0 10px rgba(255,0,100,0.6);
 }
 
+/* VIDEO */
 video {
   margin-top:20px;
   width:300px;
   border-radius:15px;
-  box-shadow:0 0 20px red;
+  box-shadow:0 0 15px rgba(255,0,150,0.5);
 }
 
+/* LOCAL IMAGE */
+.local-image {
+  width:300px;
+  border-radius:15px;
+  margin-top:20px;
+  box-shadow:0 0 15px rgba(150,0,255,0.6);
+}
+
+/* GRID */
 .container {
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -54,38 +62,34 @@ video {
   padding:40px;
 }
 
+/* CARDS */
 .card {
-  background:rgba(20,20,20,0.8);
-  border:1px solid rgba(255,0,0,0.3);
+  background:rgba(20,20,20,0.85);
+  border:1px solid rgba(255,0,150,0.3);
   border-radius:15px;
   padding:25px;
   text-align:center;
   transition:0.3s;
-  animation: glowPulse 3s infinite;
 }
 
 .card:hover {
   transform:scale(1.05);
-  box-shadow:0 0 25px rgba(255,0,0,0.8);
+  box-shadow:0 0 20px rgba(150,0,255,0.6);
 }
 
-@keyframes glowPulse {
-  0% { box-shadow: 0 0 10px red; }
-  50% { box-shadow: 0 0 30px crimson; }
-  100% { box-shadow: 0 0 10px red; }
-}
-
+/* BUTTON */
 button {
   margin-top:15px;
   padding:10px 20px;
   border:none;
   border-radius:10px;
-  background:linear-gradient(90deg,#ff0000,#ff4d4d);
+  background:linear-gradient(90deg,#ff003c,#7b00ff);
   color:white;
   font-weight:bold;
   cursor:pointer;
 }
 
+/* FOOTER */
 footer {
   text-align:center;
   padding:20px;
@@ -107,6 +111,9 @@ footer {
   <video autoplay loop muted>
     <source src="yuji.mp4" type="video/mp4">
   </video>
+
+  <!-- LOCAL IMAGE FROM YOUR PC -->
+  <img src="Gemini_Generated_Image_uje3anuje3anuje3-removebg-preview.png" class="local-image">
 </section>
 
 <section class="container">
@@ -140,7 +147,7 @@ footer {
   <div class="card">
     <h2>My Discord Server</h2>
     <p>Join the Shadow Realm 🔥</p>
-    <button onclick="window.open('https://discord.gg/hd8N6UAjxd')">
+    <button onclick="window.open('https://discord.gg/2vvsGKG83e')">
       Join Server
     </button>
   </div>
@@ -154,31 +161,20 @@ footer {
 <script>
 async function checkBot() {
   try {
-    let res = await fetch("https://api.uptimerobot.com/v2/getMonitors", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        api_key: "PUT_YOUR_UPTIMEROBOT_API_KEY_HERE",
-        format: "json"
-      })
-    });
-
-    let data = await res.json();
-    let status = data.monitors[0].status;
-
-    if (status == 2) {
+    let res = await fetch("https://replit.com/@Tktokadrisr1/Discord-Linker");
+    
+    if (res.ok) {
       document.getElementById("status").innerText = "🟢 ONLINE";
     } else {
       document.getElementById("status").innerText = "🔴 OFFLINE";
     }
 
   } catch {
-    document.getElementById("status").innerText = "⚠️ ERROR";
+    document.getElementById("status").innerText = "🔴 OFFLINE";
   }
 }
 
+setInterval(checkBot, 10000);
 checkBot();
 </script>
 
