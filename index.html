@@ -46,6 +46,11 @@
       box-shadow:0 0 15px rgba(255,0,150,0.5);
     }
 
+    .local-image {
+      width:300px;
+      border-radius:15px;
+      margin-top:20px;
+      box-shadow:0 0 15px rgba(150,0,255,0.6);
     }
 
     .container {
@@ -80,6 +85,11 @@
       cursor:pointer;
     }
 
+    button:disabled {
+      background:gray;
+      cursor:not-allowed;
+    }
+
     footer {
       text-align:center;
       padding:20px;
@@ -91,7 +101,7 @@
 <body>
 
 <header>
-  ADRI SHADOW REALM
+  ADRI SHADOW REALM | DOMAIN
 </header>
 
 <section class="hero">
@@ -103,6 +113,10 @@
     <source src="yuji.mp4" type="video/mp4">
   </video>
 
+  <!-- Local image from PC (optional) -->
+  <img src="YOUR_IMAGE_FILENAME.jpg" class="local-image">
+</section>
+
 <section class="container">
 
   <div class="card">
@@ -113,8 +127,8 @@
   <div class="card">
     <h2>My Discord Bot</h2>
     <p>Add my bot</p>
-    <button onclick="window.open('https://discord.com/oauth2/authorize?client_id=1483202977253691442')">
-      Add Bot
+    <button disabled>
+      Coming Soon ⚠️
     </button>
   </div>
 
@@ -134,7 +148,7 @@
   <div class="card">
     <h2>My Discord Server</h2>
     <p>Join the Shadow Realm 🔥</p>
-    <button onclick="window.open('https://discord.gg/2vvsGKG83e')">
+    <button onclick="window.open('https://discord.gg/WdtENJCc')">
       Join Server
     </button>
   </div>
@@ -148,7 +162,7 @@
 <script>
 async function checkBot() {
   try {
-    let res = await fetch("https://replit.com/@Tktokadrisr1/Discord-Linker");
+    let res = await fetch("YOUR_REPL_LINK_HERE");
     
     if (res.ok) {
       document.getElementById("status").innerText = "🟢 ONLINE";
