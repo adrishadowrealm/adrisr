@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adri's Website</title>
+    <style>
+        /* Base Styling */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Animated Matrix/Star Background Effect */
+        body::before {
+            content: "https://kommodo.ai/i/Te8O3tw6q1leT7T0HYC0";
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background-image: 
+                radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px),
+                radial-gradient(circle, rgba(168,85,247,0.03) 2px, transparent 2px);
+            background-size: 40px 40px, 60px 60px;
+            animation: moveBg 20s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes moveBg {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-50px, -50px); }
+        }
+
+        /* Profile Card Wrapper */
+        .profile-container {
+            position: relative;
+            z-index: 2;
+            width: 90%;
+            max-width: 420px;
+            background: rgba(15, 15, 15, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 35px 25px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 
+                        0 0 30px rgba(168, 85, 247, 0.1);
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Glowing Profile Picture */
+        .avatar-wrapper {
+            position: relative;
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 20px;
+        }
+
+        .avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(168, 85, 247, 0.5);
+            position: relative;
+            z-index: 2;
+        }
+
+        .avatar-glow {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            border-radius: 50%;
+            background: #a855f7;
+            filter: blur(15px);
+            opacity: 0.4;
+            z-index: 1;
+            animation: pulse 3s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.3; }
+            100% { transform: scale(1.05); opacity: 0.6; }
+        }
+
+        /* Typography */
+        .username {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+            text-shadow: 0 0 10px rgba(255,255,255,0.2);
+        }
+
+        /* Premium Badge style common on .lol sites */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(90deg, #a855f7, #6366f1);
+            color: white;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 3px 8px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tagline {
+            font-size: 14px;
+            color: #b3b3b3;
+            line-height: 1.5;
+            margin-bottom: 30px;
+        }
+
+        /* Link Buttons */
+        .links-group {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 20px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-btn::before {
+            content: "";
+            position: absolute;
+            top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+            transition: 0.5s;
+        }
+
+        /* Hover States styling matching guns.lol aesthetic */
+        .link-btn:hover {
+            background: rgba(168, 85, 247, 0.1);
+            border-color: rgba(168, 85, 247, 0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(168, 85, 247, 0.2);
+        }
+
+        .link-btn:hover::before {
+            left: 100%;
+        }
+
+        /* Custom Audio Player container */
+        .audio-player {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 12px 20px;
+            border-radius: 14px;
+        }
+
+        .audio-info {
+            text-align: left;
+        }
+
+        .track-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .track-artist {
+            font-size: 11px;
+            color: #888888;
+        }
+
+        .play-btn {
+            background: #a855f7;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            transition: transform 0.2s;
+        }
+
+        .play-btn:hover {
+            transform: scale(1.1);
+            background: #b566ff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile-container">
+        <!-- Profile Picture Elements -->
+        <div class="avatar-wrapper">
+            <div class="avatar-glow"></div>
+            <!-- Swap the src URL below with your actual image URL later -->
+            <img src="https://www.image2url.com/r2/default/images/1781111623301-c7765cf6-b945-4cd0-aad8-b32937c05987.png" alt="Avatar" class="avatar">
+        </div>
+
+        <!-- User Information -->
+        <div class="username">𝐀𝐃𝐑𝐈︱𝐒𝐑</div>
+        <div class="badge">PRO</div>
+        <div class="tagline">Digital Creator & Developer. Building things in the shadows. Welcome to my page.</div>
+
+        <!-- Navigation / Social Buttons -->
+        <div class="links-group">
+            <a href="https://www.instagram.com/adri_sr.aep?igsh=MWF4MmNjZHU5M3h6ag==" target="_blank" class="link-btn">Instagram</a>
+            <a href="https://youtube.com/@adri_shadowrealm?si=XbjLs21DhDXNU3gm" target="_blank" class="link-btn">YouTube</a>
+            <a href="https://www.tiktok.com/@adri_sr.aep?_r=1&_t=ZS-976FE3Mu0Jx" target="_blank" class="link-btn">TikTok</a>
+            <a href="https://x.com/adri_sr_aep" target="_blank" class="link-btn">Twitter / X</a>
+        </div>
+
+        <!-- Background Autoplay music feature (Classic biolink vibe) -->
+        <div class="audio-player">
+            <div class="audio-info">
+                <div class="track-name">Dead inside</div>
+                <div class="track-artist">АДЛИН</div>
+            </div>
+            <!-- Swap the audio source URL with a raw audio link (.mp3) later -->
+            <audio id="bg-music" src="https://cdn.discordapp.com/attachments/1513507646156705922/1514322335669420212/Dead_Inside.mp3?ex=6a2af213&is=6a29a093&hm=572791c9f2ccb19e34104fd49a21a7111bc1e24f4ff6efdf8c8090bc0dab5e04&" loop></audio>
+            <button class="play-btn" id="play-trigger">▶</button>
+        </div>
+    </div>
+
+    <script>
+        // Simple Audio Player Toggle Logic
+        const music = document.getElementById('bg-music');
+        const playBtn = document.getElementById('play-trigger');
+
+        playBtn.addEventListener('click', () => {
+            if (music.paused) {
+                music.play();
+                playBtn.innerText = '⏸';
+            } else {
+                music.pause();
+                playBtn.innerText = '▶';
+            }
+        });
+    </script>
+</body>
+</html>
